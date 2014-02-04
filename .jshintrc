@@ -1,0 +1,16 @@
+{
+    "curly": true,
+    "eqeqeq": true,
+    "onevar": true,
+    "quotmark": true,
+    "trailing": true,
+    "undef": true,
+    "unused": true,
+    
+    "globals": {
+        "$": true,
+        "jQuery": true,
+        "document": true,
+        "module": true
+    }
+}

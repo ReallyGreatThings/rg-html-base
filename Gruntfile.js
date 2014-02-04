@@ -2,10 +2,16 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    jshint: {
+      all: ['Gruntfile.js', 'js/*.js'],
+      options: {
+        jshintrc: '.jshintrc',
+      }
+    },
     watch: {
       css: {
         files: ['css/*.css', 'js/*.js', 'img/*'],
-        tasks: ['cssmin', 'uglify', 'imagemin']
+        tasks: ['cssmin', 'uglify', 'imagemin', 'jshint']
       },
     },
     cssmin: {
@@ -42,10 +48,11 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
   grunt.registerTask('default', ['watch']);
