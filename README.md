@@ -5,10 +5,9 @@
 * [gruntjs](https://github.com/gruntjs/grunt)
 
 ## Зависимости:
-* Node.js
-* grunt-cli:
+* Node.js - необходимо установить
+* grunt-cli - command line interface для grunt, необходимо установить командой: 
     $ npm install -g grunt-cli
-* Node: npm
 
 ## Инициализация:
 * клонируем репозиторий
