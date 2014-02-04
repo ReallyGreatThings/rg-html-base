@@ -23,6 +23,7 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
+          'dest/js/html5shiv.js': 'js/vendor/html5shiv.js',
           'dest/js/scripts.min.js': ['js/vendor/jquery-1.11.0.min.js', 'js/main.js']
         }
       }

@@ -3,6 +3,7 @@
 ## Используются:
 * [html5-boilerplate](https://github.com/h5bp/html5-boilerplate)
 * [gruntjs](https://github.com/gruntjs/grunt)
+* [html5shiv](https://github.com/aFarkas/html5shiv)
 
 ## Зависимости:
 * Node.js - необходимо установить
