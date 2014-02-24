@@ -8,11 +8,28 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc',
       }
     },
-    watch: {
-      css: {
-        files: ['css/*.css', 'js/*.js', 'img/*'],
-        tasks: ['cssmin', 'uglify', 'imagemin', 'jshint']
-      },
+    copy: {
+      main: {
+        src: 'index.html',
+        dest: 'dest/index.html',
+        options: {
+          process: function (content) {
+            // Remove single normalize
+            content = content.replace('<link rel="stylesheet" href="css/normalize.css">','');
+
+            // Replace main.css to styles.min.css
+            content = content.replace('main.css', 'styles.min.css');
+
+            // Remove jQuery
+            content = content.replace('<script src="js/vendor/jquery-1.11.0.min.js"></script>', '');
+
+            // Replace main.js to scripts.min.js
+            content = content.replace('main.js', 'scripts.min.js');
+
+            return content;
+          }
+        }
+      }
     },
     cssmin: {
       combine: {
@@ -29,7 +46,7 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'dest/js/html5shiv.js': 'js/vendor/html5shiv.js',
+          'dest/js/vendor/html5shiv.js': 'js/vendor/html5shiv.js',
           'dest/js/scripts.min.js': ['js/vendor/jquery-1.11.0.min.js', 'js/main.js']
         }
       }
@@ -52,9 +69,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['copy', 'cssmin', 'uglify', 'imagemin', 'jshint']);
 
 };
